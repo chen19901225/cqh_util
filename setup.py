@@ -28,7 +28,8 @@ setuptools.setup(
     author_email="1832866299@qq.com",
     description="cqh utils function",
     long_description=long_description,
-    url="https://github.com/chen19901225/cqh_file_watcher",
+    long_description_content_type='',
+    url="https://github.com/chen19901225/cqh_util",
     packages=setuptools.find_packages(),
     install_requires=[
         "gitpython"
