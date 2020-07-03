@@ -56,4 +56,4 @@ def gpush(c):
     import git
     repo = git.Repo(proj_dir)
     active_branch = repo.active_branch
-    repo.remote.push(active_branch)
+    repo.remote().push(active_branch)
