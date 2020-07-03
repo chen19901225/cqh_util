@@ -1,0 +1,8 @@
+{"command_list":[
+    {
+        "pattern": ".*\\.py",
+        "command": "${HOME}/env/default/bin/inv copy-files"
+    }
+],
+"directory": "${DIRECTORY}"
+}

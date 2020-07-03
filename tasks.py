@@ -1,3 +1,4 @@
+import git
 
 from cqh_util import invoke_util
 from invoke import task
@@ -5,7 +6,7 @@ import os
 proj_dir = os.path.dirname(
     os.path.abspath(__file__)
 )
-
+proj_name = 'cqh_util'
 venv_dir = os.path.join(proj_dir,
                         'venv')
 
@@ -53,7 +54,11 @@ def build_and_install(c):
 
 @task
 def gpush(c):
-    import git
     repo = git.Repo(proj_dir)
     active_branch = repo.active_branch
     repo.remote().push(active_branch)
+
+
+@task
+def copy_files(c):
+    c.run(f"ansible-playbook {proj_dir}/playbooks/copy_files.yaml -e proj_name={proj_name} -e proj_dir={proj_dir}")
