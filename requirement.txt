@@ -1,0 +1,6 @@
+-i https://mirrors.aliyun.com/pypi/simple/
+gitpython
+invoke
+flake8
+autopep8
+pre-commit
