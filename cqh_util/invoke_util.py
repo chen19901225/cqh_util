@@ -15,3 +15,8 @@ def git_unstaged_and_untracked_file_list(proj_dir: str) -> typing.List[str]:
     file_list = list(file_set)
     file_list = file_list + repo.untracked_files
     return file_list
+
+
+def git_current_branch(proj_dir: str) -> str:
+    repo = git.Repo(proj_dir)
+    return repo.active_branch

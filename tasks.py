@@ -49,3 +49,10 @@ def build_and_install(c):
 
     assert whl_path
     c.run("pip install -U {}".format(whl_path))
+
+
+@task
+def gpush(c):
+    branch = invoke_util.git_current_branch(proj_dir)
+    print("branch:{}".format(branch))
+    c.run("git push origin {}".format(branch))
