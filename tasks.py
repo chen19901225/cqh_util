@@ -53,6 +53,7 @@ def build_and_install(c):
 
 @task
 def gpush(c):
-    branch = invoke_util.git_current_branch(proj_dir)
-    print("branch:{}".format(branch))
-    c.run("git push origin {}".format(branch))
+    import git
+    repo = git.Repo(proj_dir)
+    active_branch = repo.active_branch
+    repo.remote.push(active_branch)
