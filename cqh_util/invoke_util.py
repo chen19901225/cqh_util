@@ -2,12 +2,16 @@ import git
 import typing
 
 
-def git_unstaged_and_untracked_file_list(proj_dir: str) -> typing.List[str]:
+def git_unstaged_and_untracked_file_list(proj_dir: [str, git.Repo]) -> typing.List[str]:
     """
     :proj_dir: 项目路径， git根路劲
     :return: List
     """
-    repo = git.Repo(proj_dir)
+    if isinstance(proj_dir, str):
+        repo = git.Repo(proj_dir)
+    else:
+        assert isinstance(proj_dir, git.Repo)
+        repo = proj_dir
     file_set = set()
     for diff in repo.index.diff(None):
         file_set.add(diff.a_path)
