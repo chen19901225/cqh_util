@@ -10,7 +10,7 @@ Welcome to cqh_util's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   cqh_util.rst
+   modules
 
 
 

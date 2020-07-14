@@ -4,13 +4,15 @@ cqh\_util package
 Submodules
 ----------
 
-cqh\_util.ansible\_util module
+cqh\_util.ansible\_util 模块
 ------------------------------
 
 .. automodule:: cqh_util.ansible_util
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   
+   functions
+   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+   .. autofunction:: ansible_get_line_kwargs
 
 cqh\_util.invoke\_util module
 -----------------------------

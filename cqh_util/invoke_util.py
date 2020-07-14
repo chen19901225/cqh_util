@@ -4,8 +4,7 @@ import typing
 
 def git_unstaged_and_untracked_file_list(proj_dir: [str, git.Repo]) -> typing.List[str]:
     """
-    :proj_dir: 项目路径， git根路劲
-    :return: List
+    获取 一个项目下面unstaged和untacked的文件列表
     """
     if isinstance(proj_dir, str):
         repo = git.Repo(proj_dir)
@@ -22,5 +21,8 @@ def git_unstaged_and_untracked_file_list(proj_dir: [str, git.Repo]) -> typing.Li
 
 
 def git_current_branch(proj_dir: str) -> str:
+    """
+    获取git当前的branch
+    """
     repo = git.Repo(proj_dir)
     return repo.active_branch

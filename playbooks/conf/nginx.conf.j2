@@ -1,0 +1,9 @@
+server {
+        listen 50000;
+        location / {
+            limit_rate 1000k;
+            root {{remote_proj_dir}}/docs/_build/html;
+        }
+        access_log /www/wwwlogs/{{proj_name}}_out.log;
+        error_log /www/wwwlogs/{{proj_name}}_error.log;
+}

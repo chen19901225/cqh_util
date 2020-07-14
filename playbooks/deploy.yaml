@@ -1,0 +1,17 @@
+- hosts: qq
+  vars:
+    remote_proj_dir: '{{ansible_env.HOME}}/deploy/{{proj_name}}'
+
+  tasks:
+    - name: sync
+      synchronize:
+          src: '{{proj_dir}}'
+          dest: '{{ansible_env.HOME}}/deploy/'
+    - name: copy nginx
+      template:
+        src: '{{proj_dir}}/playbooks/conf/nginx.conf.j2'
+        dest:  '/www/server/panel/vhost/nginx/{{proj_name}}.conf'
+      become: yes
+      become_method: sudo
+    
+    - include_tasks: tasks/nginx_check_and_restart.yaml

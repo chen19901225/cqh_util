@@ -29,6 +29,15 @@ def upload(c):
 
 
 @task
+def deploy(c):
+    c.run("rm -rf ${proj_dir}/docs/_build/html")
+    with c.cd(f"{proj_dir}/docs"):
+        c.run("/home/vagrant/envs/default/bin/sphinx-build -M html . _build")
+    cmd = f"ansible-playbook  {proj_dir}/playbooks/deploy.yaml -e proj_name={proj_name} -e proj_dir={proj_dir}"
+    c.run(cmd)
+
+
+@task
 def build_and_install(c):
     dist_dir = os.path.join(
         proj_dir, 'dist'

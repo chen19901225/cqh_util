@@ -18,8 +18,8 @@ import os
 import sys
 _dir = os.path.dirname(os.path.abspath(__file__))
 workspace_dir = os.path.dirname(_dir)
-proj_dir = os.path.join(workspace_dir, 'cqh_util')
-sys.path.insert(0, proj_dir)
+
+sys.path.insert(0, workspace_dir)
 
 
 # -- Project information -----------------------------------------------------
@@ -35,6 +35,11 @@ author = 'test'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    "sphinx.ext.autodoc",
+    "sphinx.ext.coverage",
+    "sphinx.ext.doctest",
+    "sphinx.ext.intersphinx",
+    "sphinx.ext.viewcode",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
