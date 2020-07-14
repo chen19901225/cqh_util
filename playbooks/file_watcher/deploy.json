@@ -1,0 +1,9 @@
+{
+    "command_list": [
+        {
+            "pattern": ".*\\.(py|rst)",
+            "command": "${HOME}/env/default/bin/inv deploy"
+        }
+    ],
+    "directory": "${DIRECTORY}"
+}
