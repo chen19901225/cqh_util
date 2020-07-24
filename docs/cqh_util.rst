@@ -22,6 +22,15 @@ cqh\_util.invoke\_util module
    :undoc-members:
    :show-inheritance:
 
+
+cqh\_util.mod\_util module
+-----------------------------
+
+.. automodule:: cqh_util.mod_util
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 cqh\_util.mixin module
 ----------------------
 

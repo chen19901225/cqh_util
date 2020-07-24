@@ -2,11 +2,11 @@
     "create-terminals.commands": [
         {
             "name": "lint",
-            "cmd": "~/env/default/bin/cqh_file_watcher --conf=playbooks/file_watcher/lint.json"
+            "cmd": "~/envs/default/bin/cqh_file_watcher --conf=playbooks/file_watcher/lint.json"
         },
         {
             "name": "copy",
-            "cmd": "~/env/default/bin/cqh_file_watcher --conf=playbooks/file_watcher/copy.json"
+            "cmd": "~/envs/default/bin/cqh_file_watcher --conf=playbooks/file_watcher/copy.json"
         }
     ]
 }
