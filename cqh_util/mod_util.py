@@ -1,11 +1,13 @@
 
 
-def mod_record_map(mod, input_list, field,
+def mod_record_map(mod,
+                   input_list,
+                   field,
                    input_field=None):
     """
-    一般用于表的关联查询
+    一般用于表的关联查询,生成一个map
     比如user的detail信息 根据user_list, 提取用户id,也就是用户表的主键id, 然后在detail表里面找到user_id={user_id}的记录，然后做成一个map
-        上面这个例子, mod:是Detail, input_list: userlist, input_field: id, field: user_id
+        上面这个例子, mod:是Detail, input_list: userlist, input_field: id, field: user_id, 返回的是dict, key是field, value是mod的类型
 
     """
     if not input_list:
