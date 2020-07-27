@@ -39,6 +39,7 @@ def deploy(c):
 
 @task
 def build_and_install(c):
+    generate(c)
     dist_dir = os.path.join(
         proj_dir, 'dist'
     )
@@ -71,3 +72,14 @@ def gpush(c):
 @task
 def copy_files(c):
     c.run(f"ansible-playbook {proj_dir}/playbooks/copy_files.yaml -e proj_name={proj_name} -e proj_dir={proj_dir}")
+
+
+@task
+def generate(c):
+
+    readme_path = os.path.join(proj_dir, 'readme.rst')
+    target_conf_path = os.path.join(proj_dir, proj_name, 'conf.py')
+    with open(readme_path, 'r') as read_f, open(target_conf_path, 'w') as write_f:
+        write_f.write('''doc = """
+                      {}
+                      """\n'''.format(read_f.read()))

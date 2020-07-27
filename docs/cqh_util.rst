@@ -33,6 +33,16 @@ cqh\_util.mod\_util module
 
 
 
+cqh\_util.argparser\_util module
+-----------------------------
+
+.. automodule:: cqh_util.argparser_util
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+
 cqh\_util.common\_util module
 -----------------------------
 
