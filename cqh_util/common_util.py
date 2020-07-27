@@ -1,4 +1,17 @@
 
+def common_first_or_none(predict, *args):
+    for arg in args:
+        if predict(arg):
+            return arg
+    return None
+
+
+def common_first_or_raise(predict, *args):
+    ret = common_first_or_none(predict, *args)
+    if ret is None:
+        raise ValueError("cannot find available value in {}".format(args))
+    return ret
+
 
 def common_generator_paginate(cursor, page_size=10):
     """
