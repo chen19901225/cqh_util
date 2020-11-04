@@ -24,7 +24,7 @@ def git_unstaged_and_untracked_file_list(proj_dir: [str, git.Repo]) -> typing.Li
         last_index = proj_dir.rindex("/")
         proj_dir = proj_dir[:last_index]
     for name in file_list:
-        abs_path = os.path.join(repo.git_dir, name)
+        abs_path = os.path.join(proj_dir, name)
         if os.path.exists(abs_path):
             filter_file_list.append(name)
     return filter_file_list

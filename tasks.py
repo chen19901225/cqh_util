@@ -25,7 +25,7 @@ def lint_new(c):
 
 @task
 def upload(c):
-    c.run("twine upload dist/*")
+    c.run("twine upload dist/* --verbose")
 
 
 @task
