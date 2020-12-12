@@ -1,7 +1,7 @@
 import logging
 
 
-class MultiLineLoggerAdapter(logging.LoggerAdapter):
+class LoggerMultiLineLoggerAdapter(logging.LoggerAdapter):
     def __init__(self, prefix, logger):
         # super(LoggerAdapter, self).__init__(logger, {})
         super().__init__(logger, {})
@@ -28,7 +28,7 @@ class MultiLineLoggerAdapter(logging.LoggerAdapter):
                 self.logger.log(level, line, *args, **kwargs)
 
 
-def ensure_logger(logger_instance):
+def logger_ensure_logger(logger_instance):
     if isinstance(logger_instance, logging.LoggerAdapter):
         return logger_instance.logger
     if isinstance(logger_instance, logging.Logger):

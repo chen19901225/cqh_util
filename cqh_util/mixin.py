@@ -2,10 +2,11 @@ import typing
 import time
 
 
-class AssertMixin(object):
+class MixinAssertMixin(object):
     """
     用于单元测试
     """
+
     def assert_record_and_map_equal(self, record: typing.Union[object, dict], pairs: dict):
         """
         从 `pairs` 里面的每个key, value, `record` 必然存在且相等
