@@ -1,4 +1,4 @@
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 # generated_by_export_class:logger_util||logger_ensure_logger
 from .logger_util import logger_ensure_logger
 
@@ -29,6 +29,12 @@ from .mod_util import mod_get_in_db_set
 # generated_by_export_class:mod_util||mod_record_cursor_id_between
 from .mod_util import mod_record_cursor_id_between
 
+# generated_by_export_class:request_util||request_tornado_repeat_request
+from .request_util import request_tornado_repeat_request
+
+# generated_by_export_class:request_util||request_requests_reapeat_request
+from .request_util import request_requests_reapeat_request
+
 __all__ = [
     'logger_ensure_logger',
     'LoggerMultiLineLoggerAdapter',
@@ -39,5 +45,7 @@ __all__ = [
     'MixinAssertMixin',
     'mod_record_map',
     'mod_get_in_db_set',
-    'mod_record_cursor_id_between'
+    'mod_record_cursor_id_between',
+    'request_tornado_repeat_request',
+    'request_requests_reapeat_request'
 ]
