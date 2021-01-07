@@ -35,6 +35,9 @@ from .request_util import request_tornado_repeat_request
 # generated_by_export_class:request_util||request_requests_reapeat_request
 from .request_util import request_requests_reapeat_request
 
+# generated_by_export_class:jinja2_util||LocalFileSystemBytecodeCache
+from .jinja2_util import LocalFileSystemBytecodeCache
+
 __all__ = [
     'logger_ensure_logger',
     'LoggerMultiLineLoggerAdapter',
@@ -47,5 +50,6 @@ __all__ = [
     'mod_get_in_db_set',
     'mod_record_cursor_id_between',
     'request_tornado_repeat_request',
-    'request_requests_reapeat_request'
+    'request_requests_reapeat_request',
+    'LocalFileSystemBytecodeCache'
 ]

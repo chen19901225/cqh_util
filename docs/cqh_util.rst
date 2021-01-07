@@ -52,6 +52,26 @@ cqh\_util.common\_util module
    :show-inheritance:
 
 
+
+cqh\_util.logger\_util module
+-----------------------------
+
+.. automodule:: cqh_util.logger_util
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+
+cqh\_util.request\_util module
+-----------------------------
+
+.. automodule:: cqh_util.request_util
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
 cqh\_util.mixin module
 ----------------------
 
