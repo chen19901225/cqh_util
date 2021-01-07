@@ -44,7 +44,7 @@ setuptools.setup(
     url="https://github.com/chen19901225/cqh_util",
     packages=setuptools.find_packages(),
     install_requires=[
-        "gitpython"
+        "gitpython", "jinja2"
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
