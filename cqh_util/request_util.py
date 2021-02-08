@@ -19,13 +19,18 @@ async def request_tornado_repeat_request(request_fuc, retry_code_range_list=((59
             return res
 
 
-def request_requests_reapeat_request(request_func, max_request_count=5):
-    from requests.exceptions import ConnectionError
+def request_requests_reapeat_request(request_func, max_request_count=5, timeout=(5, 20)):
+    from requests.exceptions import ConnectionError, ReadTimeout
     for i in range(max_request_count):
         try:
             res = request_func()
             return res
         except ConnectionError:
+            if i < max_request_count - 1:
+                continue
+            else:
+                raise
+        except ReadTimeout:
             if i < max_request_count - 1:
                 continue
             else:
