@@ -1,4 +1,4 @@
-__version__ = "0.1.4"
+__version__ = "0.1.5"
 # generated_by_export_class:logger_util||logger_ensure_logger
 from .logger_util import logger_ensure_logger
 
@@ -38,6 +38,9 @@ from .request_util import request_requests_reapeat_request
 # generated_by_export_class:jinja2_util||LocalFileSystemBytecodeCache
 from .jinja2_util import LocalFileSystemBytecodeCache
 
+# generated_by_export_class:city_util||province_and_city_list
+from .city_util import province_and_city_list
+
 __all__ = [
     'logger_ensure_logger',
     'LoggerMultiLineLoggerAdapter',
@@ -51,5 +54,6 @@ __all__ = [
     'mod_record_cursor_id_between',
     'request_tornado_repeat_request',
     'request_requests_reapeat_request',
-    'LocalFileSystemBytecodeCache'
+    'LocalFileSystemBytecodeCache',
+    'province_and_city_list'
 ]
