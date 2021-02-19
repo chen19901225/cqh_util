@@ -1,4 +1,4 @@
-__version__ = "0.1.5"
+__version__ = "0.1.6"
 # generated_by_export_class:logger_util||logger_ensure_logger
 from .logger_util import logger_ensure_logger
 
@@ -38,8 +38,8 @@ from .request_util import request_requests_reapeat_request
 # generated_by_export_class:jinja2_util||LocalFileSystemBytecodeCache
 from .jinja2_util import LocalFileSystemBytecodeCache
 
-# generated_by_export_class:city_util||province_and_city_list
-from .city_util import province_and_city_list
+# generated_by_export_class:city_util||province_and_city_dict
+from .city_util import province_and_city_dict
 
 __all__ = [
     'logger_ensure_logger',
@@ -55,5 +55,5 @@ __all__ = [
     'request_tornado_repeat_request',
     'request_requests_reapeat_request',
     'LocalFileSystemBytecodeCache',
-    'province_and_city_list'
+    'province_and_city_dict'
 ]

@@ -280,13 +280,13 @@ province_and_city_raw = [
 ]
 
 
-province_and_city_list = {}
+province_and_city_dict = {}
 for raw_item in province_and_city_raw:
     # print(raw_item)
     province, city_raw_str = raw_item
     city_list = re.split("\s+", city_raw_str.strip())
     city_list = [e.strip() for e in city_list if e.strip()]
-    province_and_city_list[province] = city_list
+    province_and_city_dict[province] = city_list
 
 if __name__ == "__main__":
-    print(province_and_city_list)
+    print(province_and_city_dict)
