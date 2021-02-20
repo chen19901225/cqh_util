@@ -185,14 +185,14 @@ def escape_to_unicode(value):
 
 # to_unicode was previously named _unicode not because it was private,
 # but to avoid conflicts with the built-in unicode() function/type
-_unicode = to_unicode
+_unicode = escape_to_unicode
 
 # When dealing with the standard library across python 2 and 3 it is
 # sometimes useful to have a direct conversion to the native string type
 if str is unicode_type:
-    native_str = to_unicode
+    escape_native_str = escape_to_unicode
 else:
-    native_str = utf8
+    escape_native_str = escape_utf8
 
 _BASESTRING_TYPES = (basestring_type, type(None))
 
@@ -239,7 +239,7 @@ def escape_recursive_unicode(obj):
 # This regex should avoid those problems.
 # Use to_unicode instead of tornado.util.u - we don't want backslashes getting
 # processed as escapes.
-_URL_RE = re.compile(to_unicode(
+_URL_RE = re.compile(escape_to_unicode(
     r"""\b((?:([\w-]+):(/{1,3})|www[.])(?:(?:(?:[^\s&()]|&amp;|&quot;)*(?:[^!"#$%&'()*+,.:;<=>?@\[\]^`{|}~\s]))|(?:\((?:[^\s&()]|&amp;|&quot;)*\)))+)"""  # noqa: E501
 ))
 

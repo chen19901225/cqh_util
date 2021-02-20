@@ -77,6 +77,9 @@ from .escape_util import escape_xhtml_unescape
 # generated_by_export_class:escape_util||escape_xhtml_escape
 from .escape_util import escape_xhtml_escape
 
+# generated_by_export_class:escape_util||escape_native_str
+from .escape_util import escape_native_str
+
 __all__ = [
     'logger_ensure_logger',
     'LoggerMultiLineLoggerAdapter',
@@ -103,5 +106,6 @@ __all__ = [
     'escape_json_decode',
     'escape_json_encode',
     'escape_xhtml_unescape',
-    'escape_xhtml_escape'
+    'escape_xhtml_escape',
+    'escape_native_str'
 ]
