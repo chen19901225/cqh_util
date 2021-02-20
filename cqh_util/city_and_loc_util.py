@@ -38,7 +38,7 @@ city_loc_raw = """
     海口经纬度:(110.35000,20.01667)<br>
     澳门经纬度:(113.50000,22.20000)</p>
 """
-province_city_raw="""
+province_city_raw = """
 安徽省 合肥 北纬31.52 东经117.17<br>
     安徽省 安庆 北纬30.31 东经117.02<br>
     安徽省 蚌埠 北纬32.56 东经117.21<br>
@@ -663,5 +663,39 @@ province_city_raw="""
     重庆市 合川市 北纬30.02 东经106.15<br>
     重庆市 江津市 北纬29.18 东经106.16<br>
     重庆市 南川市 北纬29.10 东经107.05<br>
-    重庆市 永川市 北纬29.23 东经105.53<
+    重庆市 永川市 北纬29.23 东经105.53<br>
 """
+_index = 0
+city_loc_list = []
+for line in city_loc_raw.splitlines():
+    line = line.strip()
+    if line:
+        index1 = line.index("经纬度")
+        city = line[:index1]
+        begin_index, end_index = line.index("("), line.index(")")
+        lon, lat = line[begin_index + 1:end_index].split(",")
+        # generated_by_dict_unpack: float(
+        lon, lat = float(lon), float(lat)
+        city_loc_list.append(
+            [_index, city, (lon, lat)]
+        )
+        _index+=1
+
+for line in province_city_raw.splitlines():
+    line = line.strip()
+    if line:
+        lat_index = line.index("北纬")
+        lon_index = line.index("东经")
+        end_index = line.index("<")
+        city = line[:lat_index].strip().split(" ")[1]
+        lat = float(line[lat_index + 2:lon_index].strip())
+        lon = float(line[lon_index + 2:end_index])
+        city_loc_list.append(
+            [
+                _index, city, (lon, lat)
+            ]
+        )
+        _index +=1
+
+if __name__ == "__main__":
+    print(city_loc_list)
