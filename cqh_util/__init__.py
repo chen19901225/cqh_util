@@ -1,4 +1,4 @@
-__version__ = "0.1.6"
+__version__ = "0.1.7"
 # generated_by_export_class:logger_util||logger_ensure_logger
 from .logger_util import logger_ensure_logger
 
@@ -41,6 +41,42 @@ from .jinja2_util import LocalFileSystemBytecodeCache
 # generated_by_export_class:city_util||province_and_city_dict
 from .city_util import province_and_city_dict
 
+# generated_by_export_class:escape_util||escape_recursive_unicode
+from .escape_util import escape_recursive_unicode
+
+# generated_by_export_class:escape_util||escape_to_basestring
+from .escape_util import escape_to_basestring
+
+# generated_by_export_class:escape_util||escape_to_unicode
+from .escape_util import escape_to_unicode
+
+# generated_by_export_class:escape_util||escape_utf8
+from .escape_util import escape_utf8
+
+# generated_by_export_class:escape_util||escape_parse_qs_bytes
+from .escape_util import escape_parse_qs_bytes
+
+# generated_by_export_class:escape_util||escape_url_unescape
+from .escape_util import escape_url_unescape
+
+# generated_by_export_class:escape_util||escape_url_escape
+from .escape_util import escape_url_escape
+
+# generated_by_export_class:escape_util||escape_squeeze
+from .escape_util import escape_squeeze
+
+# generated_by_export_class:escape_util||escape_json_decode
+from .escape_util import escape_json_decode
+
+# generated_by_export_class:escape_util||escape_json_encode
+from .escape_util import escape_json_encode
+
+# generated_by_export_class:escape_util||escape_xhtml_unescape
+from .escape_util import escape_xhtml_unescape
+
+# generated_by_export_class:escape_util||escape_xhtml_escape
+from .escape_util import escape_xhtml_escape
+
 __all__ = [
     'logger_ensure_logger',
     'LoggerMultiLineLoggerAdapter',
@@ -55,5 +91,17 @@ __all__ = [
     'request_tornado_repeat_request',
     'request_requests_reapeat_request',
     'LocalFileSystemBytecodeCache',
-    'province_and_city_dict'
+    'province_and_city_dict',
+    'escape_recursive_unicode',
+    'escape_to_basestring',
+    'escape_to_unicode',
+    'escape_utf8',
+    'escape_parse_qs_bytes',
+    'escape_url_unescape',
+    'escape_url_escape',
+    'escape_squeeze',
+    'escape_json_decode',
+    'escape_json_encode',
+    'escape_xhtml_unescape',
+    'escape_xhtml_escape'
 ]
