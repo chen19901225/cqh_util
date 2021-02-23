@@ -29,8 +29,8 @@ basestring_type = str
 #from tornado.util import PY3, unicode_type, basestring_type
 
 from urllib.parse import parse_qs as _parse_qs
-import html.entities as htmlentitydefs
 import urllib.parse as urllib_parse
+import html.entities as htmlentitydefs
 unichr = chr
 
 import typing  # noqa
@@ -53,7 +53,7 @@ def escape_xhtml_escape(value):
        Added the single quote to the list of escaped characters.
     """
     return _XHTML_ESCAPE_RE.sub(lambda match: _XHTML_ESCAPE_DICT[match.group(0)],
-                                to_basestring(value))
+                                escape_to_basestring(value))
 
 
 def escape_xhtml_unescape(value):
@@ -77,7 +77,7 @@ def escape_json_encode(value):
 
 def escape_json_decode(value):
     """Returns Python objects for the given JSON string."""
-    return json.loads(to_basestring(value))
+    return json.loads(escape_to_basestring(value))
 
 
 def escape_squeeze(value):
@@ -97,8 +97,7 @@ def escape_url_escape(value, plus=True):
         The ``plus`` argument
     """
     quote = urllib_parse.quote_plus if plus else urllib_parse.quote
-    return quote(utf8(value))
-
+    return quote(escape_utf8(value))
 
 
 def escape_url_unescape(value, encoding='utf-8', plus=True):
@@ -121,12 +120,13 @@ def escape_url_unescape(value, encoding='utf-8', plus=True):
     if encoding is None:
         if plus:
             # unquote_to_bytes doesn't have a _plus variant
-            value = to_basestring(value).replace('+', ' ')
+            value = escape_to_basestring(value).replace('+', ' ')
         return urllib_parse.unquote_to_bytes(value)
     else:
         unquote = (urllib_parse.unquote_plus if plus
-                    else urllib_parse.unquote)
-        return unquote(to_basestring(value), encoding=encoding)
+                   else urllib_parse.unquote)
+        return unquote(escape_to_basestring(value), encoding=encoding)
+
 
 def escape_parse_qs_bytes(qs, keep_blank_values=False, strict_parsing=False):
     """Parses a query string like urlparse.parse_qs, but returns the
@@ -139,7 +139,7 @@ def escape_parse_qs_bytes(qs, keep_blank_values=False, strict_parsing=False):
     # This is gross, but python3 doesn't give us another way.
     # Latin1 is the universal donor of character encodings.
     result = _parse_qs(qs, keep_blank_values, strict_parsing,
-                        encoding='latin1', errors='strict')
+                       encoding='latin1', errors='strict')
     encoded = {}
     for k, v in result.items():
         encoded[k] = [i.encode('latin1') for i in v]
@@ -214,9 +214,16 @@ def escape_to_basestring(value):
         )
     return value.decode("utf-8")
 
+
 def escape_unicode_escape(value):
-    value = escape_utf8(value)
-    return value.decode("unicode_escape")
+    """
+    例子:
+        "{\"msg\":\"订单临时入库成功\",\"code\":100,\"data\":{\"url\":\"https:\\/\\/shop.ttdg88.com\\/pay\\/load\\/only\\/4f453f6aea4b1340d58188bcc806ded9.html\"},\"time\":1614062156}"
+        json.dumps({"name": "测试"})
+    """
+    value = escape_to_unicode(value)
+    value = re.sub(r'(\\u[a-zA-Z0-9]{4})', lambda x: x.group(1).encode("utf-8").decode("unicode-escape"), value)
+    return value
 
 
 def escape_recursive_unicode(obj):
@@ -225,13 +232,13 @@ def escape_recursive_unicode(obj):
     Supports lists, tuples, and dictionaries.
     """
     if isinstance(obj, dict):
-        return dict((recursive_unicode(k), recursive_unicode(v)) for (k, v) in obj.items())
+        return dict((escape_recursive_unicode(k), escape_recursive_unicode(v)) for (k, v) in obj.items())
     elif isinstance(obj, list):
-        return list(recursive_unicode(i) for i in obj)
+        return list(escape_recursive_unicode(i) for i in obj)
     elif isinstance(obj, tuple):
-        return tuple(recursive_unicode(i) for i in obj)
+        return tuple(escape_recursive_unicode(i) for i in obj)
     elif isinstance(obj, bytes):
-        return to_unicode(obj)
+        return escape_to_unicode(obj)
     else:
         return obj
 
@@ -248,3 +255,29 @@ _URL_RE = re.compile(escape_to_unicode(
 ))
 
 
+unichr = chr
+
+
+def _convert_entity(m):
+    if m.group(1) == "#":
+        try:
+            if m.group(2)[:1].lower() == 'x':
+                return unichr(int(m.group(2)[1:], 16))
+            else:
+                return unichr(int(m.group(2)))
+        except ValueError:
+            return "&#%s;" % m.group(2)
+    try:
+        return _HTML_UNICODE_MAP[m.group(2)]
+    except KeyError:
+        return "&%s;" % m.group(2)
+
+
+def _build_unicode_map():
+    unicode_map = {}
+    for name, value in htmlentitydefs.name2codepoint.items():
+        unicode_map[name] = unichr(value)
+    return unicode_map
+
+
+_HTML_UNICODE_MAP = _build_unicode_map()
