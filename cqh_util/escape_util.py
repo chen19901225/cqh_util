@@ -214,6 +214,10 @@ def escape_to_basestring(value):
         )
     return value.decode("utf-8")
 
+def escape_unicode_escape(value):
+    value = escape_utf8(value)
+    return value.decode("unicode_escape")
+
 
 def escape_recursive_unicode(obj):
     """Walks a simple data structure, converting byte strings to unicode.
