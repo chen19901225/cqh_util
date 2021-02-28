@@ -1,4 +1,4 @@
-__version__ = "0.1.12"
+__version__ = "0.1.13"
 # generated_by_export_class:logger_util||logger_ensure_logger
 from .logger_util import logger_ensure_logger
 
@@ -83,6 +83,9 @@ from .escape_util import escape_native_str
 # generated_by_export_class:city_and_loc_util||city_loc_list
 from .city_and_loc_util import city_loc_list
 
+# generated_by_export_class:escape_util||escape_unicode_escape
+from .escape_util import escape_unicode_escape
+
 __all__ = [
     'logger_ensure_logger',
     'LoggerMultiLineLoggerAdapter',
@@ -111,5 +114,6 @@ __all__ = [
     'escape_xhtml_unescape',
     'escape_xhtml_escape',
     'escape_native_str',
-    'city_loc_list'
+    'city_loc_list',
+    'escape_unicode_escape'
 ]
