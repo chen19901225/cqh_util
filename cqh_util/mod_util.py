@@ -1,4 +1,18 @@
 
+def mod_record_map_v2(mod, input_list, field, key_field=None):
+    """
+    相当于 qs = mod.select(mod.field.in_(input_field))
+    return {e.key_field: e for e in qs}
+    """
+    if key_field is None:
+        key_field = field
+    if not input_list:
+        return dict()
+    if not isinstance(input_list[0],(str, int, float, bytes)):
+        raise TypeError("input_list[0] type rror {}".format(type(input_list[0])))
+    query_set = mod.select().where([getattr(mod, field).in_ == input_list])
+    return {getattr(e, input_list): e for e in query_set}
+
 
 def mod_record_map(mod,
                    input_list,
