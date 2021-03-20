@@ -679,7 +679,7 @@ for line in city_loc_raw.splitlines():
         city_loc_list.append(
             [_index, city, (lon, lat)]
         )
-        _index+=1
+        _index += 1
 
 for line in province_city_raw.splitlines():
     line = line.strip()
@@ -695,7 +695,7 @@ for line in province_city_raw.splitlines():
                 _index, city, (lon, lat)
             ]
         )
-        _index +=1
+        _index += 1
 
 if __name__ == "__main__":
     print(city_loc_list)

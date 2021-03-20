@@ -1,3 +1,5 @@
+from .escape_util import escape_unicode_escape
+
 
 async def request_tornado_repeat_request(request_fuc, retry_code_range_list=((599, 600)), max_request_count=5):
     from tornado.simple_httpclient import HTTPError
@@ -35,3 +37,15 @@ def request_requests_reapeat_request(request_func, max_request_count=5, timeout=
                 continue
             else:
                 raise
+
+
+def request_simple_unpack_tornado_res(res):
+    # generated_by_dict_unpack: res
+    code, body = res.code, res.body
+    body = escape_unicode_escape(body or b'')
+    return code, body
+
+
+def request_logger_tornado_res(logger, res, method='info'):
+    code, body = request_simple_unpack_tornado_res(res)
+    getattr(logger, method)('code:{}, body:{}, cost:{}'.format(code, body, res.request_time))

@@ -1,4 +1,4 @@
-__version__ = "0.1.14"
+__version__ = "0.1.16"
 # generated_by_export_class:logger_util||logger_ensure_logger
 from .logger_util import logger_ensure_logger
 

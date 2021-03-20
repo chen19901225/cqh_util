@@ -8,9 +8,9 @@ def mod_record_map_v2(mod, input_list, field, key_field=None):
         key_field = field
     if not input_list:
         return dict()
-    if not isinstance(input_list[0],(str, int, float, bytes)):
+    if not isinstance(input_list[0], (str, int, float, bytes)):
         raise TypeError("input_list[0] type rror {}".format(type(input_list[0])))
-    query_set = mod.select().where([getattr(mod, field).in_ == input_list])
+    query_set = mod.select().where([getattr(mod, field).in_(input_list)])
     return {getattr(e, input_list): e for e in query_set}
 
 
@@ -32,7 +32,7 @@ def mod_record_map(mod,
             input_list = [e[input_field] for e in input_list]
         else:
             input_list = [getattr(e, input_field) for e in input_list]
-    query_set = mod.select().where([getattr(mod, field).in_ == input_list])
+    query_set = mod.select().where([getattr(mod, field).in_(input_list)])
     return {getattr(e, field): e for e in query_set}
 
 

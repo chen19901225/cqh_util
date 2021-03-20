@@ -26,9 +26,10 @@ def read_version():
     code = open(init_path).read()
     for line in code.splitlines():
         if line.startswith("__version__"):
-            version =  line.split("=")[-1]
-            return version.strip().strip('"').strip("'") # 渠道"0.1.1" 的引号
+            version = line.split("=")[-1]
+            return version.strip().strip('"').strip("'")  # 渠道"0.1.1" 的引号
     raise ValueError("cannot find version")
+
 
 version = read_version()
 print("version:{}".format(version))
