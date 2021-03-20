@@ -89,6 +89,12 @@ from .escape_util import escape_unicode_escape
 # generated_by_export_class:mod_util||mod_record_map_v2
 from .mod_util import mod_record_map_v2
 
+# generated_by_export_class:request_util||request_simple_unpack_tornado_res
+from .request_util import request_simple_unpack_tornado_res
+
+# generated_by_export_class:request_util||request_logger_tornado_res
+from .request_util import request_logger_tornado_res
+
 __all__ = [
     'logger_ensure_logger',
     'LoggerMultiLineLoggerAdapter',
@@ -119,5 +125,7 @@ __all__ = [
     'escape_native_str',
     'city_loc_list',
     'escape_unicode_escape',
-    'mod_record_map_v2'
+    'mod_record_map_v2',
+    'request_simple_unpack_tornado_res',
+    'request_logger_tornado_res'
 ]
