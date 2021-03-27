@@ -11,7 +11,7 @@ def mod_record_map_v2(mod, input_list, field, key_field=None):
     if not isinstance(input_list[0], (str, int, float, bytes)):
         raise TypeError("input_list[0] type rror {}".format(type(input_list[0])))
     query_set = mod.select().where([getattr(mod, field).in_(input_list)])
-    return {getattr(e, input_list): e for e in query_set}
+    return {getattr(e, key_field): e for e in query_set}
 
 
 def mod_record_map(mod,
