@@ -7,11 +7,13 @@ class MixinAssertMixin(object):
     用于单元测试
     """
 
-    def assert_record_and_map_equal(self, record: typing.Union[object, dict], pairs: dict):
+    def assert_record_and_map_equal(self, record: typing.Union[object, dict], pairs: dict, exclude=()):
         """
         从 `pairs` 里面的每个key, value, `record` 必然存在且相等
         """
         for key, value in pairs.items():
+            if key in exclude:
+                continue
             if not isinstance(record, dict):
                 record_value = getattr(record, key)
             else:
