@@ -6,3 +6,4 @@ autopep8
 pre-commit
 twine
 jinja2
+cqh_push
