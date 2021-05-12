@@ -1,4 +1,4 @@
-__version__ = "0.1.18"
+__version__ = "0.1.20"
 # generated_by_export_class:logger_util||logger_ensure_logger
 from .logger_util import logger_ensure_logger
 
@@ -95,6 +95,12 @@ from .request_util import request_simple_unpack_tornado_res
 # generated_by_export_class:request_util||request_logger_tornado_res
 from .request_util import request_logger_tornado_res
 
+# generated_by_export_class:image_util||image_byte_to_base64
+from .image_util import image_byte_to_base64
+
+# generated_by_export_class:image_util||image_base64_to_byte
+from .image_util import image_base64_to_byte
+
 __all__ = [
     'logger_ensure_logger',
     'LoggerMultiLineLoggerAdapter',
@@ -127,5 +133,7 @@ __all__ = [
     'escape_unicode_escape',
     'mod_record_map_v2',
     'request_simple_unpack_tornado_res',
-    'request_logger_tornado_res'
+    'request_logger_tornado_res',
+    'image_byte_to_base64',
+    'image_base64_to_byte'
 ]
