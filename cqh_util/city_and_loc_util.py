@@ -666,6 +666,7 @@ province_city_raw = """
 """
 _index = 0
 city_loc_list = []
+duplicate_city_list = []
 for line in city_loc_raw.splitlines():
     line = line.strip()
     if line:
@@ -678,6 +679,7 @@ for line in city_loc_raw.splitlines():
         city_loc_list.append(
             [_index, city, (lon, lat)]
         )
+        duplicate_city_list.append(city)
         _index += 1
 
 for line in province_city_raw.splitlines():
@@ -689,12 +691,14 @@ for line in province_city_raw.splitlines():
         city = line[:lat_index].strip().split(" ")[1]
         lat = float(line[lat_index + 2:lon_index].strip())
         lon = float(line[lon_index + 2:end_index])
-        city_loc_list.append(
-            [
-                _index, city, (lon, lat)
-            ]
-        )
-        _index += 1
+        if city not in duplicate_city_list:
+            city_loc_list.append(
+                [
+                    _index, city, (lon, lat)
+                ]
+            )
+            _index += 1
+            duplicate_city_list.append(city)
 
 if __name__ == "__main__":
     print(city_loc_list)
